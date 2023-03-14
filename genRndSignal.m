@@ -8,7 +8,7 @@ function [n,x] = genRndSignal(N,B,K)
 
 in=0;
 x=0;
-n=[0:N];
+n=[0:N-1];
 A_makedist=makedist("Uniform","lower",0,"upper",1);
 A_sub_K=random(A_makedist,1);
 F_makedist=makedist("Uniform","lower",0,"upper",B);
