@@ -28,14 +28,18 @@ w=MeanW+sqrt(Pw)*randn(1,Lw2P);
 
 r_2PAM=w+s_2PAM;
 
+figure("name","Señal rebuda")
+
 subplot(1,2,1)
-plot(s_2PAM)
+plot(s_2PAM,"color",[0 0 0])
+title("s_2PAM Signal")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
 
 subplot(1,2,2)
-plot(r_2PAM)
+plot(r_2PAM,"color",[0 0 0])
+title("r_2PAM Signal")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
@@ -55,18 +59,21 @@ figure("Name","Señal rebuda amb diverses variancies");
 
 subplot(1,3,1)
 plot(s_2PAM)
+title("s_2PAM Signal")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
 
 subplot(1,3,2)
 plot(r_2PAM_1)
+title("s_2PAM with variance '0'")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
 
 subplot(1,3,3)
 plot(r_2PAM_2)
+title("s_2PAM with variance '0.5'")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
@@ -93,20 +100,22 @@ rf2P_L=length(r_fil_2PAM);
 
 Nss=L;
 f1=0;
-a_reb_2PAM=r_fil_2PAM(1,1);
+M=floor(rf2P_L/Nss);
+a_reb_2PAM=zeros(1,M);
 
-for f1=5:4:rf2P_L
-    a_reb_2PAM=[a_reb_2PAM r_fil_2PAM(1,f1)];
+for f1=Nss:Nss:rf2P_L
+    a_reb_2PAM(1,f1/Nss)=r_fil_2PAM(1,f1);
 end
 
-a_reb_2PAM=a_reb_2PAM(1,3:length(a_2PAM)+2);
+a2P_sz=size(a_2PAM);
+a_reb_2PAM=a_reb_2PAM(1,1:a2P_sz(2));
 
 % 7
 
 figure("Name","Seqüencia rebuda a_reb_2PAM");
 
 plot(a_2PAM,"LineStyle","--","Color",[1 0 0],"LineWidth",2);
-
+title("Comparació señal entrada/rebuda")
 hold on
 plot(a_reb_2PAM,"LineStyle","-","Color",[0 1 0],"LineWidth",2)
 xlabel("sample")
@@ -121,7 +130,68 @@ hold off
 
 % Señal rebuda per a Pw1=0
 
+% 5.1
+
+r_fil_2PAM_1=conv(r_2PAM_1,H,"full");
+rf2P_L_1=length(r_fil_2PAM_1);
+
+% 6.1
+
+f2=0;
+M1=floor(rf2P_L_1/Nss);
+a_reb_2PAM_1=zeros(1,M1);
+
+for f2=Nss:Nss:rf2P_L_1
+    a_reb_2PAM_1(1,f2/Nss)=r_fil_2PAM_1(1,f2);
+end
+
+a2P1_sz=size(a_2PAM);
+a_reb_2PAM_1=a_reb_2PAM_1(1:a2P1_sz(2));
+
+% 7.1
+
+figure("Name","Seqüencia rebuda a_reb_2PAM amb variancia '0'");
+
+plot(a_2PAM,"LineStyle","-","Color",[0.5 0 0],"LineWidth",3);
+title("Comparació señal entrada/rebuda")
+hold on
+plot(a_reb_2PAM_1,"LineStyle",":","Color",[0 0.5 0],"LineWidth",3)
+xlabel("sample")
+ylabel("amplitude");
+hold off
+
 % Señal rebuda per a Pw2=0.5
+
+% 5.2
+
+r_fil_2PAM_2=conv(r_2PAM_2,H,"full");
+rf2P_L_2=length(r_fil_2PAM_2);
+
+% 6.2
+
+f3=0;
+M2=floor(rf2P_L_2/Nss);
+a_reb_2PAM_2=zeros(1,M2);
+
+for f3=Nss:Nss:rf2P_L_2
+    a_reb_2PAM_2(1,f3/Nss)=r_fil_2PAM_2(1,f3);
+end
+
+a2P2_sz=size(a_2PAM);
+a_reb_2PAM_2=a_reb_2PAM_2(1:a2P2_sz(2));
+
+% 7.2
+
+figure("Name","Seqüencia rebuda a_reb_2PAM amb variancia '0.5'");
+
+plot(a_reb_2PAM_2,"LineStyle",":","Color",[0.8 0.8 0],"LineWidth",3)
+
+title("Comparació señal entrada/rebuda")
+hold on
+plot(a_2PAM,"LineStyle","-","Color",[1 0 0],"LineWidth",3);
+xlabel("sample")
+ylabel("amplitude");
+hold off
 
 %% 2.4 Relació Senyal-a-Soroll
 
