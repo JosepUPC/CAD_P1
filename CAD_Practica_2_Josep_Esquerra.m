@@ -112,7 +112,7 @@ a_reb_2PAM=a_reb_2PAM(1,1:a2P_sz(2));
 
 % 7
 
-figure("Name","Seqüencia rebuda a_reb_2PAM");
+figure("Name","Seqüencia rebuda a_reb_2PAM amb variància '0.01'");
 
 plot(a_2PAM,"LineStyle","--","Color",[1 0 0],"LineWidth",2);
 title("Comparació señal entrada/rebuda")
@@ -195,3 +195,53 @@ hold off
 
 %% 2.4 Relació Senyal-a-Soroll
 
+% 9
+
+% señal s_2PAM
+
+s_fil_2PAM=conv(s_2PAM,H,"full");
+sf2P_L=length(s_fil_2PAM);
+
+Nss=L;
+fs1=0;
+Ms1=floor(sf2P_L/Nss);
+s_fm_2PAM=zeros(1,Ms1);
+
+for fs1=Nss:Nss:sf2P_L
+    s_fm_2PAM(1,fs1/Nss)=s_fil_2PAM(1,fs1);
+end
+
+s2P_sz=size(a_2PAM);
+s_fm_2PAM=s_fm_2PAM(1,1:s2P_sz(2));
+
+% soroll w
+
+w_fil=conv(w,H,"full");
+w_L=length(w_fil);
+
+Nss=L;
+fw=0;
+Mf=floor(w_L/Nss);
+w_fm=zeros(1,Mf);
+
+for fw=Nss:Nss:w_L
+    w_fm(1,fw/Nss)=w_fil(1,fw);
+end
+
+w_sz=size(a_2PAM);
+w_fm=w_fm(1,1:w_sz(2));
+
+% 10
+
+s_fm_sqrt_2PAM=s_fm_2PAM.*conj(s_fm_2PAM);
+Ptx=mean(s_fm_sqrt_2PAM,'all');
+
+% 11
+
+w_fm_fft=w_fm.*conj(w_fm);
+Pww=mean(w_fm_fft,'all');
+
+% 12
+
+snr=Ptx/Pww;
+snrdB=10*log(snr);
