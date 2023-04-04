@@ -21,7 +21,7 @@ Pw=0.01;
 MeanW=0;
 w=MeanW+sqrt(Pw)*randn(1,Lw2P);
 
-% 3 Señal rebut r_2PAM:
+% 3 Señal rebut r_4PAM:
 
 r_4PAM=w+s_4PAM;
 
@@ -29,14 +29,14 @@ figure("name","Señal rebuda")
 
 subplot(1,2,1)
 plot(s_4PAM,"color",[0 0 0])
-title("s_2PAM Signal")
+title("s_4PAM Signal")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
 
 subplot(1,2,2)
 plot(r_4PAM,"color",[0 0 0])
-title("r_2PAM Signal")
+title("r_4PAM Signal")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
@@ -56,27 +56,27 @@ figure("Name","Señal rebuda amb diverses variancies");
 
 subplot(1,3,1)
 plot(s_4PAM)
-title("s_2PAM Signal")
+title("s_4PAM Signal")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
 
 subplot(1,3,2)
 plot(r_4PAM_1)
-title("s_2PAM with variance '0'")
+title("s_4PAM with variance '0'")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
 
 subplot(1,3,3)
 plot(r_4PAM_2)
-title("s_2PAM with variance '0.5'")
+title("s_4PAM with variance '0.5'")
 ylim([-1, 1])
 xlabel("samples")
 ylabel("Amplitude");
 
 % Com es pot comprobar en la figura "Señal rebuda amb diverses variancies",
-% com afecta la variancia del soroll a la señal s_2PAM. Com més gran sigui,
+% com afecta la variancia del soroll a la señal s_4PAM. Com més gran sigui,
 % més difícil ens serà poder recuperar els valors en bit de cada simbol.
 
 %% 2.3 Filtrat Adaptat i Mostratge Òptim
@@ -109,7 +109,7 @@ a_reb_4PAM=a_reb_4PAM(1,1:a4P_sz(2));
 
 % 7
 
-figure("Name","Seqüencia rebuda a_reb_2PAM amb variància '0.01'");
+figure("Name","Seqüencia rebuda a_reb_4PAM amb variància '0.01'");
 
 plot(a_4PAM,"LineStyle","--","Color",[1 0 0],"LineWidth",2);
 title("Comparació señal entrada/rebuda")
@@ -119,7 +119,7 @@ xlabel("sample")
 ylabel("amplitude");
 hold off
 
-% Com es pot observar en la figura "Seqüencia rebuda a_reb_2PAM", els
+% Com es pot observar en la figura "Seqüencia rebuda a_reb_4PAM", els
 % simbols rebuts son lleurerament diferents degut al valor afegit per la
 % suma del soroll del vector al·leatori w.
 
@@ -147,7 +147,7 @@ a_reb_4PAM_1=a_reb_4PAM_1(1:a4P1_sz(2));
 
 % 7.1
 
-figure("Name","Seqüencia rebuda a_reb_2PAM amb variancia '0'");
+figure("Name","Seqüencia rebuda a_reb_4PAM amb variancia '0'");
 
 plot(a_4PAM,"LineStyle","-","Color",[0.5 0 0],"LineWidth",3);
 title("Comparació señal entrada/rebuda")
@@ -179,7 +179,7 @@ a_reb_4PAM_2=a_reb_4PAM_2(1:a4P2_sz(2));
 
 % 7.2
 
-figure("Name","Seqüencia rebuda a_reb_2PAM amb variancia '0.5'");
+figure("Name","Seqüencia rebuda a_reb_4PAM amb variancia '0.5'");
 
 plot(a_reb_4PAM_2,"LineStyle",":","Color",[0.8 0.8 0],"LineWidth",3)
 
@@ -194,7 +194,7 @@ hold off
 
 % 9
 
-% señal s_2PAM
+% señal s_4PAM
 
 s_fil_4PAM=conv(s_4PAM,H,"full");
 sf4P_L=length(s_fil_4PAM);
