@@ -84,3 +84,21 @@ hold off
 % 8 la probabilitat d'error de bit de la 2PAM es molt menor que la que 
 % podria tindre la 4PAM, ya que el marge d'error d'una es més gran que
 % l'altre.
+
+% 9 Pa = p1*power(abs(a1),2) + p2*power(abs(a1),2) =
+% = p1 * power(abs(-A/2),2) + p2 * power(abs(A/2),2) =
+% = (p1 + p2) * power(A,2) / 4 = power(A,2)/4
+
+A=2;
+Pa=power(A,2)/2;
+
+% 10 la potencia del soroll depend de la variancia del soroll, ja que la
+% seva mitjana es '0'. Per tant, la viarianca Pw=Pa/snr;
+
+% 11 consulti la funció calcularErrors2PAM comparitida
+
+% 12 
+
+Nd=100000;
+snr=8;
+[der,ser]=calcularErrors2PAM(Nd,snr)
