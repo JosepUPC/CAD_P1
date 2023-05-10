@@ -11,7 +11,7 @@ for in=2:2:forin
     if b(in)==0
         val=3/sqrt(5);
     else
-        val=1/sqrt(5)
+        val=1/sqrt(5);
     end
     if b(in-1)==0
         sib=-1;

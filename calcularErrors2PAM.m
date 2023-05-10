@@ -10,7 +10,7 @@ function [ ser, ber ] = calcularErrors2PAM( N, snr )
 R = randn(1,N);
 i=0;
 for i=1:N
-    if R(1,i)<=0.5
+    if R(1,i)<=0
         R(1,i)=0;
     else 
         R(1,i)=1;
@@ -39,8 +39,8 @@ R2_d=detector2PAM(R2);
 
 % 6. Càlcul del nombre de símbols i de bits erròniament decidits.
 
-[berN,ber] = biterr(R,R2_d);
-[serN,ser] = symerr(R,R2_d);
+[berN,ber] = biterr(R2_d,R);
+[serN,ser] = symerr(R2_d,R);
 
 % 7. Càlcul de les respectives probabilitats d’error.
 

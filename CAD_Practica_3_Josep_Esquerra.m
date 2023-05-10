@@ -101,4 +101,63 @@ Pa=power(A,2)/2;
 
 Nd=100000;
 snr=8;
-[der,ser]=calcularErrors2PAM(Nd,snr)
+[der,ser]=calcularErrors2PAM(Nd,snr);
+
+% 13
+
+derv=1:10;
+serv=1:10;
+i2=0;
+
+for i2=1:10
+    [derv(i2),serv(i2)]=calcularErrors2PAM(Nd,i2);
+end
+
+figure("Name","Corba error de bit 2PAM")
+stem(derv);
+figure("Name","Corba error de símbol 2PAM")
+stem(serv);
+
+% 14
+
+% referencia a la relació señal a sorol de l'apartat 12
+c1=qfunc(sqrt(8));
+
+compPAM2=[der ser c1];
+cPAM2l=20*log10(compPAM2);
+
+figure("Name","Sobreposició de resultats teórics 2PAM");
+stem(cPAM2l);
+
+% 15
+
+% 15.1
+
+Nd=100000;
+snr=8;
+[der4,ser4]=calcularErrors4PAM(Nd,snr);
+
+% 15.2
+
+derv4=1:10;
+serv4=1:10;
+i2=0;
+
+for i2=1:10
+    [derv4(i2),serv4(i2)]=calcularErrors4PAM(Nd,i2);
+end
+
+figure("Name","Corba error de bit 4PAM")
+stem(derv4);
+figure("Name","Corba error de símbol 4PAM")
+stem(serv4);
+
+% 15.3
+
+c2=(3/2)*qfunc(sqrt((snr*3)/15));
+
+compPAM4=[der4 ser4 c2];
+cPAM4l=20*log10(compPAM4);
+
+figure("Name","Sobreposició de resultats teórics 4PAM");
+stem(cPAM4l);
