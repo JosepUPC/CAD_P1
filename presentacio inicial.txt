@@ -1,0 +1,32 @@
+% mkdir crear un directori
+mkdir inception
+cd \inception
+% pwd mostra la localitzacio del directori en el que estas
+pwd
+% ls mostra el contingut del directori en el que estas
+ls
+% pots declarar una variable agafant un nom que no s'asimili a una funció i
+% li donem un valor a aquest
+a=1;
+% who mostra les variables que ara mateix estan en workspace
+who
+% Per a generar un numero complex, es millor utilitzar la funció complex()
+b = comples(2,3);
+% hi han certs numeros que estant predefinits
+pi;
+1*i;
+1*j;
+% que massa si tornem ha executar la funció whos?
+whos
+% com he hem de fer per tal de generar un vector?
+v = [0 0 0];
+% per a dornar-li un valor a una casella del vecotr determinat, lo millor
+% es
+v(2) = j;
+% d'aquesta forma, al variable s'adapta a l'atribut de la clase, assignat
+% a els demes valors la tipus complexa
+w = [1; 2, ;3];
+% per tal de genrar una matriu de 3x3
+A = [1 2 3;4 5 6];
+A
+whos
