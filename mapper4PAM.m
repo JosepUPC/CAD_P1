@@ -1,11 +1,9 @@
 function [a] = mapper4PAM(b)
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
-in=0;
+
 forin=length(b);
 a=zeros(1,forin/2);
-sib=0;
-val=0;
 
 for in=2:2:forin
     if b(in)==0

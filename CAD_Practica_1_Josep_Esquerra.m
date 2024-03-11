@@ -9,30 +9,28 @@
 % 2)
 % Delarar les variables per a general la seqüencia
 
-n=0;
-x=0;
 N=200;
 B=0.1;
 K=4;
 [n,x] = genRndSignal(N,B,K);
 
 % 3)
-% Per tal d'oberbar la sequencia en el domini feqüencial, hem de passar la
+% Per tal d'obtenir la sequencia en el domini feqüencial, hem de passar la
 % señal per una funció fft() per a generar una vector amb l'espectre
 % freqüencial de la señal tot mostrant-la en (DB)
 
 xfft=fft(x);
-xfft=10*log10(xfft.^2);
-figure("Name","Sample");
+xffr=20*log10(real(xfft));
+figure("Name","Mostratge");
 
-subplot(2,1,1)
+subplot(1,2,1)
 plot(n,x)
 title("sequence temporal domain plot")
 xlabel("time(s)")
 ylabel("Amplitude(volts)");
 
-subplot(2,1,2)
-plot(n,xfft)
+subplot(1,2,2)
+plot(n(1,1:N/2),real(xffr(1,1:N/2)))
 title("sequence frequency domain plot")
 xlabel("frequency(Hz)")
 ylabel("Amplitude(dB)");
@@ -47,7 +45,7 @@ b=analogToDigital(x);
 
 b=b(1:80);
 
-figure("Name","Digital");
+figure("Name","Digitalitzatió");
 
 stem(b,"filled","LineStyle","--","Color",[0.5 0.5 0])
 title("Binary Sequence")
@@ -57,8 +55,8 @@ ylabel("values[0/1]");
 
 %% 1.3 Codificació PAM
 % 6) La potencia (Pa) per a cada constelació és el sumatori de la
-% porbabilita del simbol multiplicat pel valor de simbol del simbol al
-% quadrat. 
+% probabilita del simbol multiplicat pel valor de simbol del simbol al
+% quadrat.
 
 % 7) Per a transmetre la señal b[n] de 80 mostres, seria necessari las
 % mateixa quantitat (80) de simbols en constelació 2-PAM
@@ -83,13 +81,13 @@ a_4PAM=mapper4PAM(b);
 
 figure("Name","PAM Codification")
 
-subplot(2,1,1)
+subplot(121)
 stem(a_2PAM,"filled","Color",[0.2 0.5 0.2],"LineStyle","--");
 title("2-PAM Polar");
 xlabel("samples*simbol")
 ylabel("value");
 
-subplot(2,1,2)
+subplot(122)
 stem(a_4PAM,"filled","Color",[0.2 0.5 0.2],"LineStyle","--");
 title("4-PAM Polar");
 xlabel("samples*simbol")
@@ -111,13 +109,12 @@ ylabel("value");
 
 % Generació del pols
 E=1;
-L=5;
+L=4;
 Mt=(-L/2:(L/2)-1);
 P=rectpuls(Mt,L)*sqrt(E/L);
 
 % Calcul de l'energia
 Ep=0;
-F1=0;
 sum=0;
 F_l1=length(P);
 for F1=1:F_l1
@@ -139,7 +136,7 @@ xlabel("time")
 ylabel("Amplitude(volts)")
 
 subplot(2,2,2)
-plot(s_4PAM,"Color",[0.2 0.2 0.4])
+stem(s_4PAM,"Color",[0.2 0.2 0.4])
 title("pluse temporal domain plot")
 xlabel("time")
 ylabel("Amplitude(volts)")
@@ -147,13 +144,13 @@ ylabel("Amplitude(volts)")
 % Representació en el domini freqüencial
 
 subplot(2,2,3)
-plot(10*log(s_2PAM.^2),"Color",[0.2 0.2 0.5])
+plot(20*log(abs(fft(s_2PAM))),"Color",[0.2 0.2 0.5])
 title("pluse frequency domain plot")
 xlabel("frequency(Hz)")
 ylabel("Amplitude(dB)")
 
 subplot(2,2,4)
-plot(10*log(s_4PAM.^2),"Color",[0.2 0.2 0.5])
+plot(20*log(abs(fft(s_4PAM))),"Color",[0.2 0.2 0.5])
 title("pluse frequency domain plot")
 xlabel("frequency(Hz)")
 ylabel("Amplitude(dB)")

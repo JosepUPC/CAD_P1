@@ -16,8 +16,8 @@ function [ b ] = analogToDigital( x )
             b(4*(i-1)+j) = str2double( bq(i, j) );
         end
     end
-    
 end
+
 
 function [ iq ] = quantize( x, partition, codebook )
 

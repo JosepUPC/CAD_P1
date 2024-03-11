@@ -1,7 +1,7 @@
 function [a] = mapper2PAM(b)
-%UNTITLED4 Summary of this function goes here
+%   UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
-in=0;
+
 f=length(b);
 a=zeros(1,f);
 
