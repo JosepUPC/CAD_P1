@@ -5,15 +5,15 @@
 
 % 1 
 
-b=repmat([0 0 0 1 1 1 1 0], 1, 10);
+% b=repmat([0 0 0 1 1 1 1 0], 1, 10);
 
-a_2PAM=repmat([+1 +1 +1 -1 -1 -1 -1 +1], 1, 10);
+% a_2PAM=repmat([+1 +1 +1 -1 -1 -1 -1 +1], 1, 10);
 
-a_4PAM=repmat([-3 -1 +1 +3], 1, 10);
+% a_4PAM=repmat([-3 -1 +1 +3], 1, 10);
 
-s_2PAM=0.5*[reshape( repmat(a_2PAM, 4, 1), [], 1 )' zeros(1, 3)];
+% s_2PAM=0.5*[reshape( repmat(a_2PAM, 4, 1), [], 1 )' zeros(1, 3)];
 
-s_4PAM=0.5*[reshape( repmat(a_4PAM, 4, 1), [], 1 )' zeros(1, 3)];
+% s_4PAM=0.5*[reshape( repmat(a_4PAM, 4, 1), [], 1 )' zeros(1, 3)];
 
 %% 2.2 Canal Additiu amb Soroll Gaussià Blanc
 
@@ -99,7 +99,6 @@ rf2P_L=length(r_fil_2PAM);
 % 6
 
 Nss=L;
-f1=0;
 M=floor(rf2P_L/Nss);
 a_reb_2PAM=zeros(1,M);
 
@@ -137,7 +136,6 @@ rf2P_L_1=length(r_fil_2PAM_1);
 
 % 6.1
 
-f2=0;
 M1=floor(rf2P_L_1/Nss);
 a_reb_2PAM_1=zeros(1,M1);
 
@@ -169,7 +167,6 @@ rf2P_L_2=length(r_fil_2PAM_2);
 
 % 6.2
 
-f3=0;
 M2=floor(rf2P_L_2/Nss);
 a_reb_2PAM_2=zeros(1,M2);
 
@@ -203,7 +200,6 @@ s_fil_2PAM=conv(s_2PAM,H,"full");
 sf2P_L=length(s_fil_2PAM);
 
 Nss=L;
-fs1=0;
 Ms1=floor(sf2P_L/Nss);
 s_fm_2PAM=zeros(1,Ms1);
 
@@ -220,7 +216,6 @@ w_fil=conv(w,H,"full");
 w_L=length(w_fil);
 
 Nss=L;
-fw=0;
 Mf=floor(w_L/Nss);
 w_fm=zeros(1,Mf);
 
