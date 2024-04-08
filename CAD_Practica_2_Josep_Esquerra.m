@@ -24,6 +24,8 @@ Pw=0.01;
 MeanW=0;
 w=MeanW+sqrt(Pw)*randn(1,Lw2P);
 
+
+
 % 3 Señal rebut r_2PAM:
 
 r_2PAM=w+s_2PAM;
@@ -100,11 +102,13 @@ rf2P_L=length(r_fil_2PAM);
 
 Nss=L;
 M=floor(rf2P_L/Nss);
-a_reb_2PAM=zeros(1,M);
+% a_reb_2PAM=zeros(1,M);
 
-for f1=Nss:Nss:rf2P_L
-    a_reb_2PAM(1,f1/Nss)=r_fil_2PAM(1,f1);
-end
+% for f1=Nss:Nss:rf2P_L
+%    a_reb_2PAM(1,f1/Nss)=r_fil_2PAM(1,f1);
+% end
+
+a_reb_2PAM=r_fil_2PAM(1,Nss:Nss:end);
 
 a2P_sz=size(a_2PAM);
 a_reb_2PAM=a_reb_2PAM(1,1:a2P_sz(2));
