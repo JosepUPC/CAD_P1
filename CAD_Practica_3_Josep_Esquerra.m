@@ -8,11 +8,11 @@
 
 % 1 consulti la funció detector2PAM.m comparitida
 
-% 2
+%% 2
 
 b_est_2PAM = detector2PAM(a_reb_2PAM);
 
-% 3
+%% 3
 
 figure("Name","Comparació entrada/sortida 2PAM amb variancia Pw=0.01")
 
@@ -26,7 +26,7 @@ ylabel("bit value")
 hold off
 
 % 4 
-% 4.1
+%% 4.1
 
 b_est_2PAM_1 = detector2PAM(a_reb_2PAM_1);
 
@@ -41,7 +41,7 @@ xlabel("samples")
 ylabel("bit value")
 hold off
 
-% 4.2
+%% 4.2
 
 b_est_2PAM_2 = detector2PAM(a_reb_2PAM_2);
 
@@ -64,11 +64,11 @@ hold off
 
 % 5 consulti la funció detector2PAM.m comparitida
 
-% 6
+%% 6
 
 b_est_4PAM = detector4PAM(a_reb_4PAM);
 
-% 7
+%% 7
 
 figure("Name","Comparació entrada/sortida 4PAM amb variancia Pw=0.01")
 
@@ -107,7 +107,6 @@ snr=8;
 
 derv=1:10;
 serv=1:10;
-i2=0;
 
 for i2=1:10
     [derv(i2),serv(i2)]=calcularErrors2PAM(Nd,i2);
@@ -118,7 +117,7 @@ stem(derv);
 figure("Name","Corba error de símbol 2PAM")
 stem(serv);
 
-% 14
+%% 14
 
 % referencia a la relació señal a sorol de l'apartat 12
 c1=qfunc(sqrt(8));
@@ -131,7 +130,7 @@ stem(cPAM2l);
 
 % 15
 
-% 15.1
+%% 15.1
 
 Nd=100000;
 snr=8;

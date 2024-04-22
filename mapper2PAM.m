@@ -6,5 +6,5 @@ f=length(b);
 a=zeros(1,f);
 
 for in=1:f
-    a(in)=-1+(2*b(in));
+    a(in)=1-(2*b(in));
 end
